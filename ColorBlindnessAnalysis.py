@@ -102,26 +102,3 @@ def display_charts(cb, scores):
     fig.suptitle(cb, y=.95, fontsize=20)
     plt.subplots_adjust(top=0.90, bottom=0.40)
     plt.show()
-
-# Replaces color in image
-def replace_color():
-    # Load the image
-    img = cv2.imread('images/rainbow_hair.png')
-
-    # Convert the image to HSV color space
-    hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-
-    # Define the range of colors to replace (in this case, red)
-    lower_red = np.array([0, 50, 50])
-    upper_red = np.array([10, 255, 255])
-
-    # Create a mask that isolates the red pixels
-    mask = cv2.inRange(hsv, lower_red, upper_red)
-
-    # Replace the red pixels with yellow
-    img[mask > 0] = [0, 255, 255]
-
-    # Convert the image to RGB color space
-    rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-
-    return rgb
