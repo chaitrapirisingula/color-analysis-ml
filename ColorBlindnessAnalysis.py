@@ -102,3 +102,23 @@ def display_charts(cb, scores):
     fig.suptitle(cb, y=.95, fontsize=20)
     plt.subplots_adjust(top=0.90, bottom=0.40)
     plt.show()
+
+# Replace specific color range in image to improve contrast
+def replace_color(image_path, lower_bound, upper_bound, color):
+    # Load the image
+    img = cv2.imread(image_path)
+
+    # Convert the image to HSV color space
+    hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+
+    # Create a mask with the pixels within the color range
+    mask = cv2.inRange(hsv, lower_bound, upper_bound)
+
+    # Replace the color with another color (in BGR format)
+    new_color = color
+    img[mask > 0] = new_color
+
+    # Convert the image to RGB color space
+    rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+
+    return rgb
