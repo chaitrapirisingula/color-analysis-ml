@@ -10,9 +10,11 @@ def simulate_colorblindness(cb_simulation_matrix, image):
     cb_image = cv2.transform(image, cb_simulation_matrix)
     return cb_image
 
+
 # Convert RGB color to its corresponding HEX value
 def rgb_to_hex(color):
     return "#{:02x}{:02x}{:02x}".format(int(color[0]), int(color[1]), int(color[2]))
+
 
 # Get colors present in image and display pie chart of colors with occurences
 def get_colors(image, number_of_colors, name):
@@ -51,6 +53,7 @@ def get_colors(image, number_of_colors, name):
     
     return rgb_colors
 
+
 # Calculate Delta E for all colors in the original image transformed to each type of colorblindness 
 # Lower Delta E -> more similar
 def get_color_similarity_scores(colors, cb_names, cb_masks):
@@ -79,13 +82,13 @@ def get_color_similarity_scores(colors, cb_names, cb_masks):
 
     return cb_similarities
 
-# Display similarity charts for most similar colors 
-def display_charts(cb, scores):
 
-    # Use top 12 scores (lower -> more similar)
-    top_scores = scores[:12] 
+# Display chart of original colors and simulated colors with delta e scores
+def display_colors_chart(title, top_scores):
 
+    # Display 4 x 6 grid with simulated colors and original colors side by side
     fig, axes = plt.subplots(4, 6, figsize=(10, 10))
+
     count = 0
     for score, score_og, color1, color2, c1_og, c2_og in top_scores:
         ax = axes[count // 6, count % 6]
@@ -105,12 +108,38 @@ def display_charts(cb, scores):
         count += 1
 
     fig.subplots_adjust(wspace=.2) 
-    fig.suptitle(cb, y=.95, fontsize=20)
+    fig.suptitle(title, y=.95, fontsize=20)
     plt.subplots_adjust(top=0.90, bottom=0.40)
     plt.show()
 
+
+# Display all similarity charts 
+def display_charts(cb, scores):
+
+    charts = []
+    chart_titles = ["Most Similar Simulated Colors", "Least Similar Simulated Colors", "Most Contrast Change from Original", "Least Contrast Change from Original"]
+
+    # Use top 12 scores for most similar colors (lower -> more similar)
+    charts.append(scores[:12])
+
+    # Use last 12 for least similar colors
+    charts.append(scores[len(scores)-12:])
+
+    # Sort by difference between the constrasts/delta e of new colors and original colors
+    sorted_scores = sorted(scores, key=lambda x: abs(x[0] - x[1]))
+    charts.append(sorted_scores[len(scores)-12:])
+    charts.append(sorted_scores[:12])
+
+    for i, top_scores in enumerate(charts):
+        title = cb + ": " + chart_titles[i]
+        display_colors_chart(title, top_scores)
+
+
 # Replace specific color range in image to improve contrast
-def replace_color(img, lower_bound, upper_bound, color):
+def replace_color(image, lower_bound, upper_bound, color):
+
+    # Make copy of image to avoid changing original
+    img = image.copy()
 
     # Convert the image to HSV color space
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
