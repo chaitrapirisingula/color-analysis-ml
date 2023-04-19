@@ -1,9 +1,8 @@
+from collections import Counter, defaultdict
+from scipy.spatial.distance import euclidean
 from sklearn.cluster import KMeans
 from skimage.color import rgb2lab
-from scipy.spatial.distance import euclidean
-from collections import Counter, defaultdict
 import matplotlib.pyplot as plt
-import numpy as np
 import cv2
 
 # Apply color blindness simulation matrix to image
@@ -55,10 +54,13 @@ def get_colors(image, number_of_colors, name):
 # Calculate Delta E for all colors in the original image transformed to each type of colorblindness 
 # Lower Delta E -> more similar
 def get_color_similarity_scores(colors, cb_names, cb_masks):
+
     cb_similarities = defaultdict(list)
+
     for ind, mask in enumerate(cb_masks):
         for i in range(len(colors)):
             c1 = colors[i][::]
+
             # Transform original colors to colors in colorblind palettes
             color1 = cv2.transform(c1.reshape(1, 1, -1), mask)[0][0]
         
@@ -74,11 +76,15 @@ def get_color_similarity_scores(colors, cb_names, cb_masks):
         
         # Sort from lowest to highest delta e
         cb_similarities[cb_names[ind]].sort()
+
     return cb_similarities
 
 # Display similarity charts for most similar colors 
 def display_charts(cb, scores):
+
+    # Use top 12 scores (lower -> more similar)
     top_scores = scores[:12] 
+
     fig, axes = plt.subplots(4, 6, figsize=(10, 10))
     count = 0
     for score, score_og, color1, color2, c1_og, c2_og in top_scores:
@@ -104,9 +110,7 @@ def display_charts(cb, scores):
     plt.show()
 
 # Replace specific color range in image to improve contrast
-def replace_color(image_path, lower_bound, upper_bound, color):
-    # Load the image
-    img = cv2.imread(image_path)
+def replace_color(img, lower_bound, upper_bound, color):
 
     # Convert the image to HSV color space
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)

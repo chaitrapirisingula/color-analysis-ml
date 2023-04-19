@@ -34,3 +34,28 @@ achromatopsia_simulation_matrix = np.array([[0.299,0.587,0.114],
 achromatomaly_simulation_matrix = np.array([[0.618,0.320,0.062],
                                 [0.163,0.775,0.062],
                                 [0.163,0.320,0.516]])
+
+# Color ranges (in HSV format)
+lower_blue = np.array([100, 50, 50]) 
+upper_blue = np.array([130, 255, 255]) 
+
+lower_green = np.array([60, 25, 0])
+upper_green = np.array([180, 255, 255])
+
+lower_red1 = np.array([0, 25, 0])
+upper_red1 = np.array([30, 255, 255])
+lower_red2 = np.array([150, 25, 0])
+upper_red2 = np.array([180, 255, 255])
+
+lower_yellow = np.array([30, 25, 0])
+upper_yellow = np.array([60, 255, 255]) 
+
+lower_orange1 = np.array([0, 25, 0])
+upper_orange1 = np.array([30, 255, 255])
+lower_orange2 = np.array([160, 25, 0])
+upper_orange2 = np.array([180, 255, 255])
+
+# BGR formatted colors
+red = np.array([0, 0, 255])
+blue = np.array([255, 0, 0])
+green = np.array([0, 255, 0])
