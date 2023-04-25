@@ -3,6 +3,7 @@ from scipy.spatial.distance import euclidean
 from sklearn.cluster import KMeans
 from skimage.color import rgb2lab
 import matplotlib.pyplot as plt
+import numpy as np
 import cv2
 
 # Apply color blindness simulation matrix to image
@@ -155,3 +156,69 @@ def replace_color(image, lower_bound, upper_bound, color):
     rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
     return rgb
+
+# Apply color adjustment to the red and green channels to simulate a more colorblind-friendly image
+def improve_contrast_red_green(image):
+
+    # Convert the image to a floating-point data type
+    img_float = image.astype(np.float32)
+
+    # Convert the image to the RGB color space
+    rgb_img = cv2.cvtColor(img_float, cv2.COLOR_BGR2RGB)
+
+    # Split the r, g, b channels
+    r, g, b = cv2.split(rgb_img)
+
+    # Reduces the difference of red and green colors by 0.7 
+    r -= ((r - g) * 0.7)
+    g += ((r - g) * 0.7)
+
+    # Merge the r, g, b channels back into a single image
+    merged_img = cv2.merge((r, g, b))
+    result = merged_img.astype(np.uint8)
+
+    return result
+
+# Apply color adjustment to the blue and green channels to simulate a more colorblind-friendly image
+def improve_contrast_blue_green(image):
+
+    # Convert the image to a floating-point data type
+    img_float = image.astype(np.float32)
+
+    # Convert the image to the RGB color space
+    rgb_img = cv2.cvtColor(img_float, cv2.COLOR_BGR2RGB)
+
+    # Split the r, g, b channels
+    r, g, b = cv2.split(rgb_img)
+
+    # Reduces the difference of blue and green colors by 0.7 
+    b -= ((b - g) * 0.7)
+    g += ((b - g) * 0.7)
+
+    # Merge the r, g, b channels back into a single image
+    merged_img = cv2.merge((r, g, b))
+    result = merged_img.astype(np.uint8)
+
+    return result
+
+# Apply color adjustment to the blue and red channels to simulate a more colorblind-friendly image
+def improve_contrast_blue_red(image):
+
+    # Convert the image to a floating-point data type
+    img_float = image.astype(np.float32)
+
+    # Convert the image to the RGB color space
+    rgb_img = cv2.cvtColor(img_float, cv2.COLOR_BGR2RGB)
+
+    # Split the r, g, b channels
+    r, g, b = cv2.split(rgb_img)
+
+    # Reduces the difference of blue and red colors by 0.7 
+    b -= ((b - r) * 0.7)
+    r += ((b - r) * 0.7)
+
+    # Merge the r, g, b channels back into a single image
+    merged_img = cv2.merge((r, g, b))
+    result = merged_img.astype(np.uint8)
+
+    return result
