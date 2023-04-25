@@ -161,17 +161,14 @@ def replace_color(image, lower_bound, upper_bound, color):
 def improve_contrast_red_green(image):
 
     # Convert the image to a floating-point data type
-    img_float = image.astype(np.float32)
-
-    # Convert the image to the RGB color space
-    rgb_img = cv2.cvtColor(img_float, cv2.COLOR_BGR2RGB)
+    rgb_img = image.astype(np.float32)
 
     # Split the r, g, b channels
     r, g, b = cv2.split(rgb_img)
 
-    # Reduces the difference of red and green colors by 0.7 
-    r -= ((r - g) * 0.7)
-    g += ((r - g) * 0.7)
+    # Reduces the difference of red and green colors
+    r -= ((r - g) * 0.75)
+    g += ((r - g) * 0.75)
 
     # Merge the r, g, b channels back into a single image
     merged_img = cv2.merge((r, g, b))
@@ -183,17 +180,14 @@ def improve_contrast_red_green(image):
 def improve_contrast_blue_green(image):
 
     # Convert the image to a floating-point data type
-    img_float = image.astype(np.float32)
-
-    # Convert the image to the RGB color space
-    rgb_img = cv2.cvtColor(img_float, cv2.COLOR_BGR2RGB)
+    rgb_img = image.astype(np.float32)
 
     # Split the r, g, b channels
     r, g, b = cv2.split(rgb_img)
 
-    # Reduces the difference of blue and green colors by 0.7 
-    b -= ((b - g) * 0.7)
-    g += ((b - g) * 0.7)
+    # Reduces the difference of blue and green colors 
+    b -= ((b - g) * 0.75)
+    g += ((b - g) * 0.75)
 
     # Merge the r, g, b channels back into a single image
     merged_img = cv2.merge((r, g, b))
@@ -205,17 +199,14 @@ def improve_contrast_blue_green(image):
 def improve_contrast_blue_red(image):
 
     # Convert the image to a floating-point data type
-    img_float = image.astype(np.float32)
-
-    # Convert the image to the RGB color space
-    rgb_img = cv2.cvtColor(img_float, cv2.COLOR_BGR2RGB)
+    rgb_img = image.astype(np.float32)
 
     # Split the r, g, b channels
     r, g, b = cv2.split(rgb_img)
 
-    # Reduces the difference of blue and red colors by 0.7 
-    b -= ((b - r) * 0.7)
-    r += ((b - r) * 0.7)
+    # Reduces the difference of blue and red colors
+    b -= ((b - r) * 0.75)
+    r += ((b - r) * 0.75)
 
     # Merge the r, g, b channels back into a single image
     merged_img = cv2.merge((r, g, b))
