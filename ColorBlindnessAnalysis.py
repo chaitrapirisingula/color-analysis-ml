@@ -167,8 +167,8 @@ def improve_contrast_red_green(image):
     r, g, b = cv2.split(rgb_img)
 
     # Reduces the difference of red and green colors
-    r -= ((r - g) * 0.75)
-    g += ((r - g) * 0.75)
+    r -= ((r - g) * 0.5)
+    g += ((r - g) * 0.5)
 
     # Merge the r, g, b channels back into a single image
     merged_img = cv2.merge((r, g, b))
@@ -186,8 +186,8 @@ def improve_contrast_blue_green(image):
     r, g, b = cv2.split(rgb_img)
 
     # Reduces the difference of blue and green colors 
-    b -= ((b - g) * 0.75)
-    g += ((b - g) * 0.75)
+    b -= ((b - g) * 0.5)
+    g += ((b - g) * 0.5)
 
     # Merge the r, g, b channels back into a single image
     merged_img = cv2.merge((r, g, b))
@@ -205,8 +205,8 @@ def improve_contrast_blue_red(image):
     r, g, b = cv2.split(rgb_img)
 
     # Reduces the difference of blue and red colors
-    b -= ((b - r) * 0.75)
-    r += ((b - r) * 0.75)
+    b -= ((b - r) * 0.5)
+    r += ((b - r) * 0.5)
 
     # Merge the r, g, b channels back into a single image
     merged_img = cv2.merge((r, g, b))
