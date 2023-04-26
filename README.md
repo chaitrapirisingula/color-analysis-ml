@@ -11,6 +11,13 @@ See the jupyter notebook files to view the results or try the program out for yo
 
 ![image](https://user-images.githubusercontent.com/89547692/234437040-8f49e571-04a9-4e72-a47a-0bcfdb312beb.png)
 
+# Analysis
+
+View most and least similar colors as well as changes from the original images to the simulated images.
+<br/>
+![image](https://user-images.githubusercontent.com/89547692/234438109-b884b5e3-39ed-4d7d-8e47-90c84d676de8.png)
+
+
 # Recoloring:
 
 ![image](https://user-images.githubusercontent.com/89547692/234437076-87e7007c-437a-4e8f-b3ab-d0220440b607.png)
