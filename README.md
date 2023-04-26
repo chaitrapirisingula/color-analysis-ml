@@ -29,11 +29,9 @@ Original Website:
 <br/>
 <img width="439" alt="image" src="https://user-images.githubusercontent.com/89547692/234437564-d9da6247-1e97-40d3-b6a3-cd21ac44f8d1.png">
 
-Original Website Protanopia View:
+Original Website Protanopia View (exit symbol is nearly invisible):
 <br/>
 <img width="457" alt="image" src="https://user-images.githubusercontent.com/89547692/234437368-e3e873de-a72e-4668-a16c-b23070e9753d.png">
-
-Exit symbol is nearly invisible
 
 Protanopia View after replacement:
 <br/>
