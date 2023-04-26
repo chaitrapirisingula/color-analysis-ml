@@ -24,12 +24,15 @@ After Recoloring (increased contrast):
 Utilize this program on websites to determine their accessibility.
 
 Original Website:
+<br/>
 <img width="439" alt="image" src="https://user-images.githubusercontent.com/89547692/234437564-d9da6247-1e97-40d3-b6a3-cd21ac44f8d1.png">
 
 Original Website Protanopia View:
+<br/>
 <img width="457" alt="image" src="https://user-images.githubusercontent.com/89547692/234437368-e3e873de-a72e-4668-a16c-b23070e9753d.png">
 
-Logout symbol is nearly invisible
+Exit symbol is nearly invisible
 
 Protanopia View after replacement:
+<br/>
 <img width="431" alt="image" src="https://user-images.githubusercontent.com/89547692/234437534-c7d5d49f-cf4f-439f-b79b-156f206c751e.png">
