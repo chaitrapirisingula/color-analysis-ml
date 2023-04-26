@@ -3,7 +3,7 @@ This is a python program that can simulate different types of colorblindness and
 
 See the jupyter notebook files to view the results or try the program out for yourself.
 
-Color-blindness Simulation Examples:
+# Color-blindness Simulation Examples:
 
 ![image](https://user-images.githubusercontent.com/89547692/234436939-906ac95f-91a6-4122-a63b-96aaffc98e07.png)
 
@@ -11,14 +11,16 @@ Color-blindness Simulation Examples:
 
 ![image](https://user-images.githubusercontent.com/89547692/234437040-8f49e571-04a9-4e72-a47a-0bcfdb312beb.png)
 
-Recoloring:
+# Recoloring:
 
 ![image](https://user-images.githubusercontent.com/89547692/234437076-87e7007c-437a-4e8f-b3ab-d0220440b607.png)
 
 Prior to recoloring:
+<br/>
 ![image](https://user-images.githubusercontent.com/89547692/234437141-34fdc8f5-f466-4ce2-be8c-ebb0d09f0380.png)
 
 After Recoloring (increased contrast):
+<br/>
 ![image](https://user-images.githubusercontent.com/89547692/234437172-5bcf2d2d-d710-4110-89e8-2262037cbe20.png)
 
 Utilize this program on websites to determine their accessibility.
