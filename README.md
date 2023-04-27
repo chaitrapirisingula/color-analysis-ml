@@ -30,6 +30,8 @@ After Recoloring (increased contrast):
 <br/>
 ![image](https://user-images.githubusercontent.com/89547692/234437172-5bcf2d2d-d710-4110-89e8-2262037cbe20.png)
 
+# Increase Accessibility
+
 Utilize this program on websites to determine their accessibility.
 
 Original Website:
